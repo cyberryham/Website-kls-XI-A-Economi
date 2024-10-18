@@ -1,0 +1,1709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Absensi dan Pembagian Kelompok Siswa</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 5px 5px 10px black;
+            text-align: center;
+            background-color: #b2d7db;
+            border: 1px solid black;
+            z-index: 2000;
+        }
+        h1 {
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+        }
+        select, input[type="number"], button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #5cb85c;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #e20505;
+            color: #fff;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e7f3e7;
+            border: 1px solid #d6e9c6;
+            border-radius: 5px;
+            display: none;
+        }
+        .absensi {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .nama-siswa {
+            display: inline-block;
+            padding: 5px 10px;
+            margin: 5px;
+            font-size: 10px;
+            
+            background-color: #c6c9c4;
+            border: 1px solid black;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .kelompok {
+            margin-bottom: 15px;
+        }
+        .spinner {
+            display: none;
+            margin: 20px auto;
+            border: 4px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 4px solid #3498db;
+            width: 40px;
+            height: 40px;
+            animation: spin 2s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .navigation {
+            display: inline-block;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .bar1, .bar2, .bar3 {
+            background-color: black;
+            width: 30px;
+            height: 5px;
+            margin: 5px;
+            border-radius: 5px;
+        }
+        .menuaa {
+          position: fixed;
+            display: none;
+            background-color: black;
+            color: #fff;
+            padding: 10px;
+            width: 190px;
+            border-radius: 5px;
+            border:1px solid #fff;
+            box-shadow: 5px 5px 5px black;
+            z-index: 5555;
+            position: absolute;
+        }
+        a {
+            text-decoration: none;
+            color: #fff;
+            padding: 10px;
+            display: block;
+        }
+        .show {
+            display: block;
+        }
+        ul{
+          list-style-type: none;
+        }
+        .container img{
+          width: 80px;
+          border-radius: 20px;
+          box-shadow: 5px 10px 5px black;
+          border: 1px solid black;
+        }
+        .container img:hover{
+          transition: 0.6s;
+          width: 85px;
+          border-radius: 20px;
+          box-shadow: 5px 10px 5px black;
+          border: 1px solid black;
+        }
+        .menuaa img{
+          width: 30px;
+          border: 1px solid black;
+          border-radius: 20px;
+          box-shadow: 2px 2px 12px #fff;
+        }
+        .menuaa p{
+          font-size: 20px;
+        }
+        .menuaa a{
+          background-color: #383838;
+          border: 0.5px solid #ffff;
+          border-radius: 3px;
+        }
+        .tentanghh p{
+          text-align: center;
+        
+        }
+        .menuaa p{
+          position: absolute;
+          top: 0px;
+          left: 110px;
+          background-color: #383838;
+          padding: 4px;
+          border-radius: 3px;
+          border: 0.3px solid #fff;
+        }
+        .menuaa a:hover{
+          background-color: #858484;
+          font-size: 20px;
+          transition: 0.5s;
+        }
+        .sepinernj h4{
+          position: absolute;
+          top: 0px;
+          left: 130px;
+          font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="navigation" id="navigation">
+    <div class="bar1"></div>
+    <div class="bar2"></div>
+    <div class="bar3"></div>
+</div>
+<div class="sepinernj"><h4>SEPi<em>ner</em></h4></div>
+<div>
+    <ul class="menuaa" id="menusepiner">
+      <img src="https://i.ibb.co.com/0tGBvXS/IMG-20241014-WA0000.jpg"><p><em>SEMANSI</em></p><hr>
+      
+        <li><a href="index6.html">Absensi Siswa</a></li>
+        <hr>
+                      <details class="website">
+        <summary>website</summary><br><hr>
+        <br><ol><br><br>
+          <li><a href="index.html" onclick="uuw()">XI-A</a></li><br>
+        </ol><br><hr>
+      </details>
+        <li><a href="index8.html">Pembagian Kelompok</a></li><hr>
+        <li><a href="https://www.sman1sindangbarang.sch.id/">SMAN 1 SDB</a></li><hr>
+        <li><a href="index7.html">Tentang</a></li><hr>
+    </ul>
+</div>
+
+<div class="container">
+  <img src="https://i.ibb.co.com/0tGBvXS/IMG-20241014-WA0000.jpg">
+    <h2>SMAN 1 SINDANGBARANG</h2>
+    <h3>Pembagian Kelompok Siswa</h3>
+
+    <div class="form-group">
+        <label for="kelas">Pilih Kelas</label>
+        <select id="kelas" onchange="tampilkanAbsensi()">
+            <option value="X">Kelas X</option>
+            <option value="XI">Kelas XI</option>
+            <option value="XII">Kelas XII</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="ruang">Pilih Ruang Kelas</label>
+        <select id="ruang" onchange="tampilkanAbsensi()">
+            <option value="A">Ruang kls A</option>
+            <option value="B">Ruang kls B</option>
+            <option value="C">Ruang kls C</option>
+            <option value="D">Ruang kls D</option>
+            <option value="E">Ruang kls E</option>
+            <option value="F">Ruang kls F</option>
+            <option value="G">Ruang kls G</option>
+            <option value="H">Ruang kls H</option>
+            <option value="I">Ruang kls I</option>
+        </select>
+    </div>
+
+    <div id="absensi" class="absensi"></div>
+
+    <div class="form-group">
+        <label for="jumlahKelompok">Jumlah Kelompok</label>
+        <input type="number" id="jumlahKelompok" min="1" placeholder="Masukkan jumlah kelompok">
+    </div>
+
+    <button onclick="bagiKelompok()">Bagi Kelompok Secara Acak</button>
+    <div class="spinner" id="spinner"></div>
+
+    <div class="result" id="result"></div>
+</div>
+<div class="tentanghh"><p>Alat ini membantu mengurangi bias dalam pemilihan dan memberikan kesempatan yang adil bagi semua siswa untuk dipilih </p></div>
+<script>
+document.getElementById("navigation").addEventListener("click", function() {
+    var menu = document.getElementById("menusepiner");
+    menu.classList.toggle("show");
+});
+// Bila ada yang eror beri tahu hamzah XI A
+// Data absensi siswa
+const dataSiswa = {
+  
+    "X": {
+        "A": [
+            "AIRA ASVIA ZAHRA",
+            "ANISA KANIA DEWI",
+            "AZHAR FACHMI ROMADON",
+            "DANDI KUSNADI",
+            "DILA ARTILA",
+            "ELKA PRAJA SETIADI",
+            "ELVIRA RAHMAWATI",
+            "ENENG SITI TASYA ULIA",
+            "FAHMI HIPDILAH",
+            "GITA PURNAMA IDAMAN",
+            "HENDARSAH",
+            "M RAMDHANI",
+            "M. KHUSNI MUBAROK",
+            "M. MUSTOPANABIL",
+            "MAISYA PUTRI MAHARANI",
+            "MAULYDHA KHAZANAH SUDIRMAN",
+            "MELISSA RAMADHANI",
+            "MUHAMAD ADILA CAHYANA",
+            "MUHAMAD REJA",
+            "MUHAMMAD FAHRI IRFANI",
+            "MUHAMMAD NURMAN MAULANA",
+            "NEYLA CANDIA",
+            "NUR AJMI SRI WAHYUNI",
+            "QINTHARA KIRANI SASTI",
+            "REHAN ALPIANSYAH",
+            "ROSA AMELIYAH",
+            "SAHRIL MUBAROK",
+            "SALFA RAHMALIA",
+            "SALWA HANIFA",
+            "SAPA RAMDANI",
+            "SATRIO",
+            "SILVI OLIA PUTRI",
+            "SRI KURNIAWATI",
+            "ZIDANE",
+            "MOCH RAJIB TRI GUSTIAWAN"
+        ],
+        "B": [
+             "ABI KURNIAWAN",
+             "AHMAD NUR FAUJI",
+             "AI HANI NURAENI",
+             "ANISA LESTARI",
+             "DAFFA HERDIANSYAH ASVI",
+             "EDPAN ELPANA",
+             "HAMKA SAKA FANDIYA",
+             "HAURA NURBAYANTI",
+             "HENDRIK ANTONI IRAWAN",
+             "HERI SUPRIATNO",
+             "HERINA FITRIANI",
+             "ISMI SULASTRI",
+             "JIAN HANAPIAH",
+             "KAMAL",
+             "M. RAFLI HERIAWAN",
+             "MELINDA",
+             "MELISA",
+             "ΜΟΝΙΚΑ",
+             "MUHAMAD AL FARIDZ",
+             "MUHAMAD FIRDAOS SEPAKAT",
+             "MUHAMAD MURTAKI",
+             "NASYA ZAHRATUL JANAH",
+             "NAZMIA ALKHUMAIRA",
+             "NENG ALISA",
+             "NURWIDIA AYU PUSPITA",
+             "PEBRIAN ALPAT",
+             "RASYA RAHADIAN",
+             "REPAN SUTIAWAN",
+             "RIZKI DZULFIKRI",
+             "ROSITA HAYANTI",
+             "SINDI ANDITA",
+             "SINDI AULIA",
+             "SRI LULU AYU HERLINA",
+             "WINI AWALIA HIJIYANI",
+             "Ramli"
+        ],
+        "C": [
+"Abdul Jalil",
+
+"Ai Nur Rosyidah",
+
+"Alya Firlia",
+
+"Ayuzi Karnain",
+
+"Danang Prayoga",
+
+"Dani Sutiawan",
+
+"Fahad Prawira",
+
+"Fina Saputri",
+
+"Ghaisha Anindia Pasha",
+
+"Guntur Aditia",
+
+"Hanima Uswatun Hasanah",
+
+"Jingga Juwita Sari",
+
+"Lamya Putri Rosani",
+
+"Mila Wulandari",
+
+"Moch Kelvin Lukiana Saputra",
+
+"Muhamad Anjar Almuksin",
+
+"Muhamad Hendi",
+
+"Muhamad Pirman Saputra",
+
+"Muhamad Sa'dan",
+
+"Muhamad Saepulloh",
+
+"Nadia Vega",
+
+"Nayisila Nuralisa",
+
+"Nubaeti",
+
+"Nur Aida Meilani",
+
+"Pujiwati",
+
+"Putra Dwi Fradista",
+
+"Rahma Yunia Alfiah",
+
+"Renata",
+
+"Riski Aditia",
+
+"Sahidul Fajar",
+
+"Sinta Ayu Pebrianti",
+
+"Siti Lutfi Salsabila QS",
+
+"Syahril Ardiansyah",
+
+"Wawan Permana",
+
+"Mutiara Nurul Insan"
+],
+        "D": [
+          
+"Abdul Rohman",
+
+"Aceh Rizal",
+
+"Agni Maulidia",
+
+"Ai Nur Fahilah",
+
+"Aldi Maulana",
+
+"Aldo",
+
+"Anisa Rizkiah",
+
+"Asyika Fathia Maulida",
+
+"Dara Ayu Dwi Ihsani",
+
+"Fauziah",
+
+"Fazril Herdiansah",
+
+"Fitri Aulia",
+
+"Hesti Apriani",
+
+"Hilmi",
+
+"Ira Mayasopa",
+
+"Mochamad Faisal R",
+
+"Mohamad Ihsan",
+
+"Muhamad Fabian Albani Putra",
+
+"Muhamad Tapriz Tamzani",
+
+"Naira Salsa Bila",
+
+"Nurul Alvia",
+
+"Rafdi Nuril Bayani",
+
+"Rahmah Nurhalizah",
+
+"Rangga Ade Liana",
+
+"Resi",
+
+"Ricky Nugraha",
+
+"Risma Novianti",
+
+"Rizky Aditia Ruslan",
+
+"Ros Nenawati",
+
+"Rustandi",
+
+"Selvi Fauziah",
+
+"Siti Andriani",
+
+"Siti Misria Anpali",
+
+"Syakira Amanda Putri"
+     ],
+        "E": [
+        
+"Adlis Febrian",
+
+"Agna Samsi Gunawan",
+
+"Agung Yuda Salim",
+
+"Ai Sri Rahayu",
+
+"Alviani Julianti",
+
+"Andri Yusup Maulana",
+
+"Ayunita Gustiani",
+
+"Cep Uloh",
+
+"Dara Septia Ramadhani",
+
+"Derli Hendriansyah",
+
+"Elsa Safitri",
+
+"Evan Nadiansah",
+
+"Gandi",
+
+"Hasa Nugraha Lalapa",
+
+"Husni Mubarok",
+
+"Jahra Salamatu Alpia",
+
+"Layla Mariliana",
+
+"M Bayu Fauzi",
+
+"Moh Razib Tri Gustian Subana",
+
+"Muhammad Lutfi Lesmana",
+
+"Najwa Kamilah",
+
+"Neng Nazwa Maria",
+
+"Putri Aulia Hutami",
+
+"Repandi",
+
+"Rezwa Nurul Subaday",
+
+"Rista Fairus Syadiah",
+
+"Salva Nurani",
+
+"Sela Selinda",
+
+"Siti Dariah",
+
+"Siti Nursolihah",
+
+"Sugih Insani",
+
+"Susi Irma Yanti",
+
+"Yunita Ramadani",
+
+"Yusni Hidayat",
+
+"Erwin Hakim"
+
+
+
+          ],
+        "F": [
+        
+"Agung Pauzi",
+
+"Aini Salsa Bila",
+
+"Alda Sinta Bela",
+
+"Alia Kartika",
+
+"Alika Triana Putri Ramdani",
+
+"Alwa Abdilah",
+
+"Angga Saputra",
+
+"Aprizal Kaistan",
+
+"Devi Alviani",
+
+"Diana",
+
+"Dinda Trispiyani",
+
+"Hendriansyah",
+
+"Intan Nuraeni Rahmatilah",
+
+"Ismady Alyandi",
+
+"Ivo Ridotulinsani",
+
+"Jihan Pahera",
+
+"Khairul Alip Nurullah",
+
+"Laila Lutfia",
+
+"Lena Heryani",
+
+"Linda Andraeni",
+
+"M A Rohman Jaelani",
+
+"Muhamad Ihsan",
+
+"Muhamad Reza Nugraha",
+
+"Muhammad Zulfikri Syukur",
+
+"Musa Alfauzan",
+
+"Neng Hunajah",
+
+"Neng Resa Amelia Nugraha",
+
+"Ripa Anjani",
+
+"Risma Sara Pauziah",
+
+"Risma Wiarga",
+
+"Sapa Patmawati",
+
+"Septiadi",
+
+"Siti Salwa Nur Hikmat",
+
+"Sri Alipa"
+
+
+
+          ],
+        "G": [
+          
+"Akbar Nugraha",
+
+"Alma Aprillia",
+
+"Alyanti",
+
+"Anwar Musadad",
+
+"Dela Susanti",
+
+"Dendi Sugianto",
+
+"Dinda Juliasari",
+
+"Faisal Cahya Pratama",
+
+"Fizria Az Zahra",
+
+"Habib Rijki",
+
+"Ikbal",
+
+"Ikhlas Wilian Maulana",
+
+"Januar Kemal Firdaos",
+
+"Lia Agustina",
+
+"Lidia Sulistiani",
+
+"Lulu Paojah",
+
+"M Riki Azi Padilah",
+
+"Muhamad Rayhan",
+
+"Muhammad Rizki Maulana",
+
+"Neng Sintia",
+
+"Nisarah",
+
+"Nugraha",
+
+"Repaliani Putri",
+
+"Ripal Ramadani",
+
+"Riva Riyanti",
+
+"Rizka Nurul Mahromah",
+
+"Saepulandi",
+
+"Sahrani",
+
+"Salma Marsa Alia",
+
+"Salsa Alpiyani",
+
+"Sindi Multiyani",
+
+"Siti Jahrah",
+
+"Teguh Hardian",
+
+"Silvia"
+
+
+
+          ],
+        "H": [
+"Ai Leni Wahyuni",
+
+"Ai Nuryani",
+
+"Alfan Henrian Meysam Ken.A.",
+
+"Anggi Maulana",
+
+"Anriana Sri Sukma Rahayu",
+
+"Bayu Subagja",
+
+"Delvi Aulia Sari",
+
+"Dewi Anjani",
+
+"Dimas Aditia Ginanjar",
+
+"Elena Salsabila",
+
+"Indi Amalia",
+
+"Jenal Mutakin",
+
+"Kayla Aulia Cahya Khirani",
+
+"Listia Mulyati",
+
+"M Rizky Sahertian",
+
+"Meli",
+
+"Muhamad Padilah",
+
+"Muhamad Rizky Aditya",
+
+"Muhamad Sidik",
+
+"Nazril Muhamad Irgi",
+
+"Nesa Diana Putri",
+
+"Noria Ningsih",
+
+"Ramdani",
+
+"Rian Abdul Rojak",
+
+"Salwa Fauziah",
+
+"Sandi",
+
+"Sipa Nazwa Nurul Padilah",
+
+"Siti Nayra Hanifa",
+
+"Siti Nurhasanah",
+
+"Sofiah Dewiyanti",
+
+"Susi Julianti",
+
+"Ucep Sapaat",
+
+"Wandi Agustian",
+
+"Ilham"
+
+
+
+          ],
+        "I": [
+        
+"A. Diansyah Latip",
+
+"Agnessa Yuliyani",
+
+"Anisa Fitri",
+
+"Anisa Nurpadilah",
+
+"Apipah Nurpaoziah",
+
+"Aris Faisal",
+
+"Bisma Prasetya Andrian",
+
+"Daliyah",
+
+"Denti Rahmawati",
+
+"Ega Intan Maelani",
+
+"Erpan",
+
+"Hadi Sugiantо",
+
+"Hutagaluh Algiorazfa",
+
+"Irwan Mukandir",
+
+"Lusy Mardiana",
+
+"M. Haikal Kusumah",
+
+"Maulidia Sifa",
+
+"Mirnawati",
+
+"Much Milan Nugraha",
+
+"Muhamad Fathir Alaziz",
+
+"Muhamad Rehan Hidayat",
+
+"Muhammad Misbahul Ulum",
+
+"Muhammad Yuzli",
+
+"Nazwa Rayisabila",
+
+"Nendy Saputra Juwandi",
+
+"Rahaf Farhanoura",
+
+"Rahmawati",
+
+"Sanian Rahmadani",
+
+"Silvi Amelia",
+
+"Siti Jahrah",
+
+"Uci Fahmi",
+
+"Wini Optapiani",
+
+"Zilah Astiawati",
+
+"SELVIA"
+
+
+
+          ],
+    },
+    "XI": {
+        "A": [
+"ABDUL AZIZ",
+
+"AHMAD SANUSI",
+
+"AI NURRIFA",
+
+"ALMIRA OKTAVIA",
+
+"ALWI RAMDANI",
+
+"ARDILA MARDIANA PUTRI",
+
+"BAMBANG PUTRA SEJAHTERA",
+
+"DENIS",
+
+"DHIKA SAPUTRA",
+
+"DINI WAHYUNI",
+
+"IVAN MAULANA",
+
+"KANIA SUCI",
+
+"LINDA PUZAWATI",
+
+"LISTIANA NURUL FATIMAH",
+
+"M. HAKI",
+
+"MILDI",
+
+"MUHAMAD DIMAS JULIAN",
+
+"MUHAMAD HAMZAH",
+
+"NAJMA",
+
+"NAZAR",
+
+"NENG MAULIDA",
+
+"RIYAN KARISMAWANTI",
+
+"SALWA OKTAVIANI",
+
+"SINTA KUSNIATI",
+
+"SITI ANITA ANANDA",
+
+"SITI DAMIYATI",
+
+"SITI RAHMAWATI",
+
+"SUSANTI",
+
+"TIARA APRIL LIANTI",
+
+"YUNITA SILVIANA"
+
+          ],
+        "B": [
+"Abdul Raup Al Malik",
+"Ahmad Wiguna Nugraha",
+"Ai Ro'ya Wiyani",
+"Alifsha Barnez Wardani",
+"Ayu Dwi Lestari",
+"Cici Septia Anggraeni",
+"Dendra",
+"Kristasa Nurhikmah",
+"Lidya Martianty",
+"Lita Talisa Martin",
+"M Lindan",
+"Mira",
+"Mutiara Ratna Dewi",
+"Nawal Kurniawati",
+"Nuraeni",
+"Nurul Syahida",
+"Perdi Maulana",
+"Pitri Aryanti",
+"Raka Ridho Brillian",
+"Risma",
+"Ristiyani Inri",
+"Rizki Alkahpi",
+"Rizki Nugraha",
+"Saepuloh",
+"Salman Nuruloh",
+"Samsul Bahri",
+"Siti Alisah",
+"Siti Patmawati",
+"Tiara Salehah",
+"Yaspi Al Majid",
+"Zahra Nanda Puspita"
+ ],
+        "C": [
+"ABU BAKAR SIDIK",
+
+"AGUNG",
+
+"ALTAF TAZRANI",
+
+"ANITASARI",
+
+"DEA ANANDA",
+
+"DENIA REGISYA",
+
+"DEWI AWALIA",
+
+"FIRMANDIKA ALFAHRI",
+
+"HAIKAL TRI JULIANTO",
+
+"HASBIALLOH",
+
+"KRISTIN YUNI MINARTI",
+
+"MEISYA AYU DWI PRATIWI",
+
+"MUHAMAD FAJAR ANUGRAH",
+
+"MUHAMAD REVAN NUGRAHA",
+
+"MUHAMAD RIZAL AULIA",
+
+"MUHAMMAD RAMDANI AL PALAH",
+
+"MUHAMAD SAMSUDIN",
+
+"NATASYA",
+
+"NURKΑΝΤΙΝΑ",
+
+"PARHAN",
+
+"RAHMATULOH SIDIQ",
+
+"REDI ARDIANSYAH",
+
+"RENA AINUR ROHIMAH",
+
+"RIYANA ABDILIYANTI",
+
+"RUSMAΝΑ",
+
+"SHAQYRA ANASTASIA ISKANDAR",
+
+"SITI NUR AZIZAH",
+
+"SUMANTRI",
+
+"YULIA SUKMAWATI"
+          ],
+        "D": [
+"AHMAD DANI",
+
+"ANDRIANSYAH",
+
+"AULIA TUSMALIA",
+
+"DEDE SUBAGJA",
+
+"ENDANG",
+
+"FAUZI RIANA",
+
+"HAMDAN FAUZI",
+
+"INDRA ACHMAD FAUZI",
+
+"IZMA AULIA FAULINA",
+
+"JUWITA ROSMAYA",
+
+"LAILA DARIFATUL HIDAYAH",
+
+"LUKMAN HIDAYAT",
+
+"MIRA NAIMA RIKA ZENCA",
+
+"MUHAMAD ADNAN SETIAWAN",
+
+"MUHAMAD ARPA PAUZI",
+
+"MUHAMAD REPAN",
+
+"N. SITI ZIHAN P.",
+
+"NENG ERNAWATI",
+
+"RIDHA MAULANA",
+
+"RISKA AMELIA",
+
+"SEPΤΙΑΝ",
+
+"SIN SIN",
+
+"SISKA",
+
+"SURYA PERMANA",
+
+"TRIPIA RAHMA PAUJI ALAWIAH",
+
+"UUL HUSNA",
+
+"WINDA YASHADATUL AISYI",
+
+"YUDA PRASETIA"
+
+],
+        "E": [
+          
+"AHMAD FAOJAN",
+
+"AHMAD TAOPIK",
+
+"AMANDA NURLAELA",
+
+"ANGGARA ADITYA SUDRAZAT",
+
+"BAYU PERMANA SAPUTRA",
+
+"CANDRA JATNIKA SUGIATNA",
+
+"IKMAL RAMDANI",
+
+"JAMIL RAMDANI",
+
+"KHOUMAIRA RATU SYIFA",
+
+"LISTA AMELIA",
+
+"M NIZAR NISVI SABAN",
+
+"Μ. KAKA ARDIANSAH",
+
+"MUHAMMAD ARIPIN",
+
+"NADILA PUSPITA GUSTIANA",
+
+"NAILA NURANI PUTRI",
+
+"NAZWA HAERI AZKIYA",
+
+"NENG DELIS DAWIAH",
+
+"NENG RESTIKA AGUSTIAWAN",
+
+"NURUL PAOJI",
+
+"PRIJAL",
+
+"REPAL MAELANI",
+
+"RINA",
+
+"RIPAN RIPANSAH",
+
+"SAEPUL ANWAR",
+
+"SAYYIDINA HIDAYAH",
+
+"SINTA",
+
+"SINTYA NABILA",
+
+"SITI ZAKIA NUR AGUSTIN",
+
+"SULASTRI",
+
+"VIKY ALDIANSYAH",
+
+"YOGA SANDIKA",
+
+"YULIA NANDA LESTARI",
+
+"ZAKI RAMADAN"
+          ],
+        "F": [
+          
+"ADHAM BAMBANG PRATAMA D",
+
+"ADISTI MAHARANI",
+
+"ALDI",
+
+"ALIP REHAN TAPDILA",
+
+"AZKA SYARIF AL-ARQAM",
+
+"BUNGA FEBRIYANI",
+
+"DEDE RIZKI",
+
+"DELA NUR SHIFA",
+
+"DENNICO RAHMAN SOPIYANDI",
+
+"DIANA MUSTIKA",
+
+"DIMAS",
+
+"FIRNANDA",
+
+"HOIRUNISA FITRIYANI",
+
+"MOCH SAHAL RAZAQ",
+
+"MUHAMAD RIFKI SEPTIANA",
+
+"MUHAMMAD FAHRI AL RIZKI",
+
+"MUHAMMAD RIAN RIZALDI",
+
+"NENENG SITI JULAEHA",
+
+"NENG AMALIA LESTARI",
+
+"NURAENI MULYADI",
+
+"RAHMA",
+
+"RAHMA ANISA",
+
+"RAISA QABILA NISA",
+
+"REZA PRATΑΜΑ",
+
+"SALSABILA HOERUNNISA",
+
+"SALSABILA MARTSYA DEVINA PUTR",
+
+"SEPWAZDI",
+
+"SILVA DINO FITRIA",
+
+"SILVIA",
+
+"SINTA ROSITA",
+
+"SITI NURAZIZAH",
+
+"SRY ANDHINI CHINTA RAHAYU",
+
+"SUCI MUSTIKA MULIAWATI",
+
+"TUTI ALAWIYAH",
+
+"YOGI ANANDA SAPUTRA",
+
+"YUNI ASYANI"
+          ],
+        "G": [
+          
+"AI SITI MARWAH",
+
+"ALYA NURNATASYA",
+
+"AMELIA NURKAMILA NOVIANTI",
+
+"ANGELINA GUNAWAN",
+
+"AYU SUCI LESTARI",
+
+"CINTA MUSTIKA",
+
+"DITA RIANTI",
+
+"FITRI ANTRIANI",
+
+"HAIVA PUTRI DILASTRI",
+
+"HANINDA PUTRI NABILA",
+
+"ICA LUTPI AL-AULIA",
+
+"KAJNI PERAL",
+
+"KUSUMA AMBAR WATI",
+
+"LIAWATI",
+
+"NADYA ANTΙΚΑ",
+
+"NAZWA AULIA SAFIRA",
+
+"NENG SARAH SUMARNI",
+
+"NURHASANAH FAUZIAH",
+
+"NENG WULAN",
+
+"RAISHA AGGUSTIN",
+
+"RANI ARDILA",
+
+"RESTIANI",
+
+"RIMA AULIA SARI",
+
+"RIMA NURIYANTI",
+
+"RISKA NURAENI",
+
+"RISMAWATI",
+
+"SANDA SETIAWATI",
+
+"SARAH",
+
+"SITI MUSLIMAH",
+
+"SOPI NURAENI",
+
+"SRI RAHAYU",
+
+"SRI YUNI NURAENI",
+
+"WARDAH SITI YUSRIAH",
+
+"ZAHRA RAHMANIA PUTRI"
+          ],
+        "H": [
+        
+"ABI SULTON",
+
+"AGNIA SALWA SAHARA",
+
+"AGUNG ROSUL",
+
+"AHMAD RADIT MEGIANTO",
+
+"AINA DINI APRILIA",
+
+"ALANSYAH",
+
+"ALDI PERMANA",
+
+"ALMA DEVINA",
+
+"APRILIA MAHARANI",
+
+"AZMY JESSICA FUTRI",
+
+"DEDE VIOLA",
+
+"DILA NURANDIANI",
+
+"ELISA MAESA RIZKIAH",
+
+"ELSA NADIRA",
+
+"ENDAH FAHMI SAPITRI",
+
+"FUTRY RISDIANA ULFA",
+
+"GALIH ADITIA PERMANA",
+
+"HILDA WULANSARI",
+
+"IRFAN FIRDAUS",
+
+"JULFIKAR",
+
+"ΚΑΚA ADITIA",
+
+"MIRNAWATI",
+
+"MOCHAMMAD ZAKI HERMAWAN",
+
+"MOH LUTVI FAHLEFI",
+
+"MUHAMAD RAMDANI",
+
+"NAZWA TRI AMANDA",
+
+"NURDANIAH",
+
+"NURHIKMAT",
+
+"PATIMAH DAYINISA",
+
+"RAFLI MOHAMAD SIDIK",
+
+"RIKI RIDHO BRILLIAN",
+
+"RISWAN ALAMSYAH",
+
+"SHIPA URROHMAH",
+
+"TRIA ANANDA"
+          ],
+    },
+  "XII": {
+        "A": [
+      "ADITIA GUSNIAWAN",
+      "AGUNG TAOPIK",
+      "AI HADIANTI",
+      "AJENG DELA MAYANGSARI",
+      "ALDA AZHURA AULIA SAPUTRI",
+      "BRYAN RAFAEL",
+      "CITRA AYUNINGTIAS",
+      "DALFA NUR MUNZIAH",
+      "DERA NURUL NISA",
+      "EPA SUSILAWATI",
+      "FIDA KAMILAH",
+      "GIA PAUJIAH",
+      "HANA MULIA SARI",
+      "ΚΕΙZA SASILIA KOMARA PUTRI",
+      "LAHIRA MALDA",
+      "LIA AMELIA",
+      "M QUTHBI NURUL HUZAEN",
+      "M SOPIANDI NURHIDAYAT",
+      "MOH BANYU AJ SANTOSO",
+      "MUHAMAD RIZKI",
+      "Nazwa Syihab",
+      "NISMARA AYUDIA",
+      "NOOVA ALISZA",
+      "NURLATIPAH",
+      "RAHMAT",
+      "RATNASARI",
+      "Riska Julia Anisa",
+      "SILVI MAHARANI RUDIAT",
+      "SITI NUR APRILIANI",
+      "SITI SAPUROH BUNGA CAMPAKA",
+      "TITA TIARA",
+      "UJANG BUDI SAPUTRA",
+      "VINA ELIASARI",
+      "YULIANI AGUSTIN",
+      "Zahraria",
+      "siapa ya???"
+    ],
+        "B": [
+      "AURA PRAMUGIA HERMAYADI",
+      "DIKI FIRMANSAH.",
+      "EPI",
+      "Ersa Mayori Sentiani",
+      "FAURIZ NURAGRIADI",
+      "FAUZAN SYAHPUTRA",
+      "INDRI WIJAYANTI",
+      "Kiki Fitriani",
+      "MELA PITRIANA",
+      "Mindi aprida",
+      "MUHAMAD MAS'UD",
+      "MUHAMAD MUKSIN",
+      "MUHAMAD YUSA DANIAL",
+      "MUHAMMAD RIZKI NUGRAHA",
+      "NABILA",
+      "Neneng Nuraeni",
+      "NENG AI LISNA",
+      "PELANGI AMALIA ZAHRA",
+      "PIKAR",
+      "PIRJI SEPDANANIA",
+      "PITRIANI",
+      "PITRI NURIAH",
+      "Raiz Abdilah Hermawan",
+      "RIANTO",
+      "SANDAWATI",
+      "SITI NURAINI",
+      "SRIKANDI HUMAIRA",
+      "TAOFIK ABDUROHMAN",
+      "WISNU",
+      "WULAN PIKO CAHYANI"
+    ],
+        "C": [
+      "ALDI",
+      "ALDO JULI SAPUTRA",
+      "ALPI SEPTIANI",
+      "AMELIA DAMAYANTI",
+      "ANDIKA ADHIA LUPRIKA",
+      "ANGGI GINANJAR",
+      "ANWAR",
+      "ARIA LATIF RAMADHAN",
+      "ASNI NUR RAHMAH",
+      "AURELLIA SALSABILA",
+      "CEPI RUSYANDI",
+      "DITA HERYANTI",
+      "ELA HAYATI",
+      "HILDA PUTRIA PEBRIANI",
+      "HISAN BASIT",
+      "IGUN SEP JITI",
+      "MARWAN MURTAKI",
+      "MEYSSA RAHMA AQILA",
+      "MOH WAHYU HIDAYAT",
+      "MUHAMAD MAULANA RAUP",
+      "MUHAMAD SENDI",
+      "muhammad ramdani",
+      "MUSTARIP",
+      "NASRUL MIPTAHUL AMNAN",
+      "NENG RESI FUTRI EFENDI",
+      "NUR LAILA BERLIANA RAMADANI",
+      "RENO FAUZAN",
+      "RIFKI SETIAWAN",
+      "ROBI MAULANA",
+      "Salma Aprilia Kamal",
+      "SALWA NUR KARIMA",
+      "Sani Irawan"
+    ],
+        "D": [
+      "ADHITIYA MUHAMAD SOEKATMADIRE",
+      "AGISNI NUR ADHA",
+      "AL FARIZ ABDULLAH",
+      "CAHYA SUMIRAT",
+      "DEA ANITA",
+      "DEDEH SAADAH",
+      "EVA",
+      "FAJAR SUKMA ALFAUZAN",
+      "FAZRI ALFAHREZI.",
+      "Heru Saputra",
+      "IRMA RISMAWANTI",
+      "M. ARIYA KURNIA",
+      "MAULANA MALIK ASMARA",
+      "muhamad hamdani",
+      "MUHAMAD YOHAN HIDAYAT",
+      "NENG NISVI NAURA FUTRI",
+      "NURSOPΡΙΑΗ",
+      "PARHAN DANI GARNIDA",
+      "Perdi D Kuswandi",
+      "RAHMAWATI",
+      "Resa Anggista",
+      "RISTI AWALIYAH",
+      "RIYANDI",
+      "SAEPUL BAHRI",
+      "SALMAN",
+      "SEVA DWI MIPTAH",
+      "Sri Rahayu",
+      "SRI RAHMAWATI",
+      "SUSAN NUR AOLIA",
+      "TASYA DWI RAMADANI",
+      "TIARA SINDASARI",
+      "VARIZZ RESQIANO ISKANDAR",
+      "WULANDARI",
+      "YOSEP RAMDAN NUGRAHA"
+    ],
+        "E": [
+      "ADI ARDIANSAH",
+      "AMELIA DWI OKTAVIANI",
+      "ASEP KURNIA NURJAMAN",
+      "AYU AZHARI",
+      "ELIN KARLINA",
+      "Fazar Maulana.",
+      "IMELDA",
+      "INDRI",
+      "JENAL ARIF",
+      "JULIANI",
+      "LUTPI",
+      "M. YUSUP ABDUL AJIZ",
+      "MUHAMAD IKBAL FAOZI",
+      "MUHAMAD SALMAN NIPTAHUL MUNI",
+      "MUHAMAD SAMSUDIN",
+      "MUKHARIZA AWALIAH NUR",
+      "NOVITASARI",
+      "REFAN WAHYU P",
+      "Resti sri rahayu",
+      "RISKA AMELIA",
+      "SALSA FITRI",
+      "SEILA WIDIYA PUTRI",
+      "SITI NURPARIDA",
+      "SITI SAMSIAH",
+      "UJANG PAJAR",
+      "YUDI RAMADANI"
+    ],
+        "F": [
+      "ABDUL BUHORI",
+      "ADE RIZWAN",
+      "AHMAD DANI",
+      "ANDI PERMANA",
+      "AULIA LATIEFA AWALIYAH",
+      "DENI HERDIANSYAH",
+      "DIAN",
+      "Endang",
+      "Esha Kusdiana",
+      "FAISAL AKBAR",
+      "FARIDA NAZWA MAULIDA",
+      "HADIS MULYADI",
+      "LENI NURAENI",
+      "MELI PITRIANI",
+      "MUHAMAD ARIPIN ILHAM",
+      "MUHAMAD SAHRIL MUBAROKАН",
+      "NURMALA",
+      "Parhan Salim",
+      "RESTI SUSANTI",
+      "Reza ripaldi",
+      "SELVI ERIXI ROSDIANA",
+      "SINTA LIDIAWATI",
+      "SITI RAHMAH NURHIDAYAH",
+      "YULIASARI",
+      "SYEHAN ASHFAHANI"
+    ],
+        "G": [
+      "AGIS SAPUTRA",
+      "AHMAD ABDULLAH",
+      "ARUM MUSTIKA PUTRI",
+      "AZHAR SHIDIK ALMUFTI",
+      "DENI MURTAKI",
+      "DHERA LUSIANA MAHARANI",
+      "EKA RAMDANI",
+      "EVA YUNITA TRI ASTUTI",
+      "META MUTIARA QOLBI",
+      "MIRFA AULIA",
+      "MOCHAMAD RIZKI ALFARIJI",
+      "MUHAMAD TOSI SANDI ATMOJO",
+      "MUHAMAD ZIDAN",
+      "MUHAMMAD FADLY BUDIONO",
+      "NAJLA MAYA PRATIWI",
+      "NENENG RISHA HAKIM",
+      "NURAENI",
+      "NURHASANAH",
+      "Parid Maulana Ilham",
+      "Raihan Supian",
+      "RATNA AULIA",
+      "Resfiany sofia",
+      "Reza Aji Guntara",
+      "RIFA RAHMAWATI",
+      "RISYA PUTRI ESTIANTI",
+      "SALWA REPITA PUSPITA PUTRI",
+      "SALWA RIVALDA",
+      "SELMA YEJUNIATI",
+      "SENIA SULISTIAWATI",
+      "SILMI NURUL AULIA",
+      "SITI NAZLA HIKMATUNNISA",
+      "SRI NINGSIH"
+      ],
+        "H": [
+"Abdul Rijal",
+
+"Aldi Aldiansah Saputra",
+
+"Ali Muhamad",
+
+"Astrid Haerani",
+
+"Azril Ripaldi",
+
+"Dimas Nugraha",
+
+"Erva Dzikrila Alfitrah",
+
+"Febia Gunawan",
+
+"Haickal Zar'ah",
+
+"Herdi Firmansyah",
+
+"Ivan Setia",
+
+"Kakang Kurniadin",
+
+"Karisma Awalia Putri",
+
+"Marla Alisyami",
+
+"Meliani Nurfadilah",
+
+"Moch Pasha Iskandar",
+
+"Mutiara Asari",
+
+"Nurdiana",
+
+"Nursapitri",
+
+"Raisyha Sallsabila Setiawan",
+
+"Refa Nurendah",
+
+"Renata Indah MC",
+
+"Resa Rosalina",
+
+"Rindi Yani",
+
+"Risma Hardianti",
+
+"Sahrul Gunawan",
+
+"Salwa Apriliani",
+
+"Sasy Melati",
+
+"Siti Deliana Putri",
+
+"Siti Salmah",
+
+"Suci Helpiani",
+
+"Syifa Awaliah Ashari",
+
+"Tiara Nanda Putri",
+
+"Vikri Virmansyah"
+],
+    }
+};
+function uuw(){
+  alert("belum di hosting")
+}
+function tampilkanAbsensi() {
+    let kelas = document.getElementById('kelas').value;
+    let ruang = document.getElementById('ruang').value;
+    let absensiDiv = document.getElementById('absensi');
+
+    if (dataSiswa[kelas] && dataSiswa[kelas][ruang]) {
+        let siswaList = dataSiswa[kelas][ruang].map(siswa => `<span class="nama-siswa">${siswa}</span>`).join(' ');
+        absensiDiv.innerHTML = `<h3>Absensi Siswa di Kelas ${kelas} Ruang ${ruang}:</h3><p>${siswaList}</p>`;
+    } else {
+        absensiDiv.innerHTML = `<p>Tidak ada data siswa untuk Kelas ${kelas} Ruang ${ruang}.</p>`;
+    }
+}
+
+function acakArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+function bagiKelompok() {
+    let kelas = document.getElementById('kelas').value;
+    let ruang = document.getElementById('ruang').value;
+    let jumlahKelompok = parseInt(document.getElementById('jumlahKelompok').value);
+    let spinner = document.getElementById('spinner');
+    spinner.style.display = 'block';
+
+    if (dataSiswa[kelas] && dataSiswa[kelas][ruang] && jumlahKelompok > 0) {
+        let siswaList = dataSiswa[kelas][ruang];
+        let siswaTeracak = acakArray([...siswaList]);
+        let kelompok = [];
+        for (let i = 0; i < jumlahKelompok; i++) {
+            kelompok[i] = [];
+        }
+
+        for (let i = 0; i < siswaTeracak.length; i++) {
+            kelompok[i % jumlahKelompok].push(siswaTeracak[i]);
+        }
+        setTimeout(function() {
+            let resultDiv = document.getElementById('result');
+            let resultHTML = '';
+
+            for (let i = 0; i < kelompok.length; i++) {
+                resultHTML += `<div class="kelompok"><h4>Kelompok ${i + 1}:</h4><ul>`;
+                kelompok[i].forEach(siswa => {
+                    resultHTML += `<li>${siswa}</li>`;
+                });
+                resultHTML += `</ul></div>`;
+            }
+
+            resultDiv.innerHTML = resultHTML;
+            resultDiv.style.display = 'block';
+            spinner.style.display = 'none';
+        }, 1000);
+    } else {
+        spinner.style.display = 'none';
+        alert('Mohon masukkan jumlah kelompok yang valid dan pilih kelas serta ruang yang sesuai.');
+    }
+}
+</script>
+
+</body>
+</html>

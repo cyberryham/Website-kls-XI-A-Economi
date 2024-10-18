@@ -1,0 +1,527 @@
+    
+      * {
+        margin: 0px;
+        padding: 0px;
+      }
+      .navig {
+        background-color: black;
+        padding: 5px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border: 0.3px solid #fff;
+        border-radius: 3px;
+        position: fixed;
+        width: 100%;
+      }
+      .halman_rt{
+        background-image: url('https://i.ibb.co.com/pvcTzXJ/3d-render-misty-room-interior-with-spotlight-shining-down-1048-14926.jpg');
+        height: 56vh;
+        border: 0.9px solid black;
+        box-shadow: 0 0 10px black,
+        0 0 20px black,
+        0 0 50px black,
+        0 0 100px black;
+        border-radius: 7px;
+      }
+      .navigation {
+        display: inline-block;
+        cursor: pointer;
+      }
+      .bar1,
+      .bar2,
+      .bar3 {
+        background-color: #fff;
+        width: 30px;
+        height: 5px;
+        margin: 5px;
+        border-radius: 3px;
+      }
+      .title {
+        color: white;
+        font-size: 24px;
+        font-weight: bold;
+        margin-right: 20px;
+      }
+      .title em{
+        background-color: red;
+        border-radius: 3px;
+        padding: 2px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        text-shadow: 0 0 10px cyan,
+        0 0 20px cyan,
+        0 0 40px cyan,
+        0 0 80px cyan
+        ;
+        animation: hamzah 2s infinite;
+      }
+      @keyframes hamzah {
+        0%{
+          background: red;
+        }
+        10%{
+          background: blue;
+        }
+        20%{
+          background: yellow;
+        }
+        30%{
+          background: coral;
+        }
+        40%{
+          background: black;
+        }
+        50%{
+          background: cyan;
+        }
+        60%{
+          background: #ea23ed;
+        }
+        70%{
+          background: #e8ec2a;
+        }
+        80%{
+          background: #de8014;
+        }
+        90%{
+          background: #616161;
+        }
+        100%{
+          background: #c91818;
+        }
+      }
+      .title em:hover{
+        transition: 0.5s;
+        background-color: #fff;
+        color: red;
+        border-radius: 3px;
+        padding: 2px;
+      }
+      .title h1{
+        font-size: 2px;
+      }
+      .navigation_menu {
+        background-color: black;
+        width: 180px;
+        border-radius: 8px;
+        border: 0.5px solid #fff;
+        box-shadow: 5px 5px 5px black;
+        margin: 5px;
+        padding: 5px;
+        display: none;
+        top:60px;
+        position: fixed;
+      }
+
+      .navigation_menu ul {
+        list-style-type: none;
+      }
+      .navigation_menu a {
+        text-decoration: none;
+        padding: 5px;
+        border: 0.6px solid #b4b4b4;
+        border-radius: 5px;
+        color: #fff;
+      }
+      .navigation_menu a:hover {
+        background-color: #786f6f;
+        transition: 0.5s;
+        font-size: 20px;
+      }
+      li {
+        padding: 5px;
+      }
+      .navigation_menu h4 {
+        color: #fff;
+        text-align: center;
+        font-size: 30px;
+        text-shadow: 
+        0 0 10px red,
+        0 0 20px red,
+        0 0 80px red,
+        0 0 100px red
+        ;
+      }
+      .halaman_nya{
+        text-align: center;
+      }
+  .halam_img {
+    margin: auto;
+   width: 50vh;
+    height: 50vh;
+    background-size: 100% 100%;
+    box-shadow: 0 0 20px black;
+    border-radius:10px;
+    animation: BgAnimation 10s linear infinite;
+  }
+    @keyframes BgAnimation{
+    0% {background-image: url('https://i.ibb.co.com/HY8ys9s/IMG-20241015-WA0021.jpg');}
+    30% {background-image: url('https://i.ibb.co.com/b2MvPxw/IMG-20241015-WA0024.jpg') ;}
+    60% {background-image: url('https://i.ibb.co.com/b2MvPxw/IMG-20241015-WA0024.jpg');}
+    180% {background-image: url('https://i.ibb.co.com/f9cKsJX/kera-barbary.jpg');}
+    100% {background-image: url('https://i.ibb.co.com/0nDbQ3F/IMG-20241016-WA0007.jpg');}
+    
+  }
+  .img_jadwal img{
+    width: 100%;
+    height: 200px;
+  }
+  h1{
+    text-align:center;
+  }
+  .b{
+    background-color:black;
+    width:20px;
+   height:20px;
+   transform: rotate(48deg);
+   position:absolute;
+   top:0px;
+   z-index:1;
+  }
+  .Motipasi{
+    background-color: #29d4cf;
+    height:100px;
+    width: 100%;
+    border-radius: 20px;
+  }
+  .Motipasi p{
+    text-align: center;
+    font-family: Arial;
+    font-size: 10px;
+    
+  }
+  .hh{
+    text-align: center;
+    
+  }
+  .hhh img{
+    width: 100px;
+    height: 100px;
+    margin: auto;
+  }
+  .hhh img:hover{
+    transition: 1s;
+    box-shadow: 14px 14px 60px black;
+    border-radius: 40px;
+  }
+  .uu img{
+    text-align: center;
+    margin: auto;
+    width: 400px;
+  }
+  .jjjh button{
+    margin: 5px;
+  }
+  .website summary{
+    color: #fff;
+  }
+  .website a{
+  text-decoration: none;
+        padding: 5px;
+        border: 0.6px solid #b4b4b4;
+        border-radius: 5px;
+        color: #fff;
+  }
+#b
+
+.boxwer{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  text-align: center;
+  perspective: 400px;
+}
+.box1{
+  background-color: black;
+  width: 159px;
+  height: 208px;
+  margin:auto;
+  border-radius: 5px;
+  box-shadow: 0 0 10px black;
+  flex-basis: calc(33.33% - 20px);
+  color: #fff;
+  text-align: center;
+  padding: 4px;
+  
+}
+.box1:hover{
+  transition: 1s;
+  transform: rotateY(60deg), rotate(51deg);
+  box-shadow: 10px 10px 10px black;
+}
+.kata{
+  text-align: center;
+}
+.kata p{
+  margin: auto;
+  text-align: center;
+  font-size: 20px;
+  background-color: #f3f3f3;
+  width: 300px;
+  padding: 5px;
+  border: 1px solid #d7d4d4;
+  border-radius: 5px;
+}
+    .moving-text {
+      padding: 4px;
+      border-radius: 5px;
+      text-shadow: 0 0 10px #30f9f1,
+      0 0 20px #30f9f1,
+      0 0 80px #30f9f1,
+      0 0 100px #30f9f1
+      ;
+      position: relative;
+      right: -100px;
+      top: 39px;
+      
+      transform: translateY(-50%);
+      font-size: 24px;
+      animation: moveText 3s forwards;
+    }
+    .moving-text p{
+      font-size: 15px;
+    }
+
+    @keyframes moveText {
+      from {
+        right: -100px;
+      }
+      to {
+        right: 50px;
+      }
+    }
+    .menu_1{
+      text-align: center;
+      display:flex;
+    }
+    .menu_2{
+      margin: auto;
+      background-color: #dfe4e4;
+      height: auto;
+      width: 50vh;
+      border-radius: 5px;
+      box-shadow: 0 0 10px #c8c8c8;
+    }
+    .menu_2 p{
+      margin: 4px;
+    }
+    .imgh img{
+      width:15vh;
+      height:15vh;
+      border-radius:4px;
+      box-shadow:0 0 10px black;
+      margin:5px;
+    }
+    .imgh img:hover{
+      transition:0.8s;
+      width:20vh;
+      height:20vh;
+      border-radius:4px;
+      box-shadow:0 0 10px black;
+      margin:5px;
+    }
+            .container {
+            position: relative;
+        }
+
+        .fade-in-text {
+           
+            bottom: -100px;
+            opacity: 0;
+            transition: bottom 0.5s ease, opacity 0.5s ease;
+            
+        }
+        .fade-in-text h3{
+          text-align:center;
+        }
+
+        .fade-in {
+            bottom: 50%;
+            opacity: 1;
+        }
+        .hr{
+          background-color:#dcdcdc;
+          height:auto;
+          margin:auto;
+          border-radius:10px;
+          text-align: center;
+        }
+        .hi{
+          text-align:center;
+          width:50vh;
+          margin:auto;
+        }
+    .boxi1{
+      width: 40vh;
+      height: auto;
+      background-color: #e7dfdf;
+      border-radius: 9px;
+      margin: auto ;
+      box-shadow: 0 0 10px black;
+      padding:5px;
+    }
+.textyy p{
+  margin: 6px;
+}
+.uuii{
+  text-align: center;
+}
+#nnuu{
+  margin: auto;
+  width: 100px;
+  border-radius: 20px;
+  padding: 5px;
+}
+
+
+.social-media-menu {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Jarak antar logo */
+}
+
+.social-icon img {
+    width: 50px; /* Ukuran logo */
+    height: 50px;
+    transition: transform 0.2s; /* Efek hover */
+}
+
+.social-icon img:hover {
+    transform: scale(1.1); /* Membesar saat hover */
+}
+.oopp{
+  text-align: center;
+}
+#nnuuu{
+  border-radius: 10px;
+  margin: auto;
+  padding: 7px;
+  background-color: #cdcdcd;
+  box-shadow: 0 0 20px black;
+}
+
+button{
+  background-color: #efeded;
+  color: #0f63f8;
+  padding: 4px;
+  margin: 5px;
+  border-radius: 5px;
+  
+}
+button:hover{
+  background-color: red;
+  color: black;
+  transition: 1s;
+}
+.butttt{
+  text-align: center;
+  background-color: #d3d6da;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 5px;
+  border: 1px solid black;
+}
+.boxa1{
+  
+}
+.box2e{
+  border-radius: 10px;
+  background-color: black;
+  width: 100%;
+  height: auto;
+  padding: 5px;
+}
+.box2e h3{
+  text-align: center;
+  color: #fff;
+  text-shadow: 0 0 10px #45eefa,
+  0 0 20px #45eefa,
+  0 0 50px #45eefa,
+  0 0 100px #45eefa
+  ;
+}
+.yyyuu{
+  text-align: center;
+}
+iframe{
+  margin: auto;
+  width: 50vh;
+  border-radius: 10px;
+  border: 2px solid #fff;
+}
+.kontakwel p{
+  text-align: center;
+  color: #fff;
+}
+.kontakwel h4{
+  color: #fff;
+  margin: 15px;
+}
+        .button {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        #button1 {
+            background-color: red;
+            color: white;
+        }
+        #button2 {
+            background-color: green;
+            color: white;
+        }
+        #container {
+            width: 300px;
+            height: 300px;
+            border: 2px solid black;
+            position: relative;
+        }
+        #button1, #button2 {
+            position: absolute;
+        }
+        #button1 {
+            left: 10px;
+            top: 10px;
+        }
+        #button2 {
+            left: 100px;
+            top: 10px;
+        }
+        .uiop{
+          text-align: center;
+          margin: auto;
+        }
+        #ok{
+          text-align: center;
+          margin: auto;
+          border-radius: 10px;
+          box-shadow: 0 0 10px black,
+      0 0 20px black,
+      0 0 80px black,
+     0 0 100px black
+      ;
+        }
+        #gh{
+          text-align: center;
+          margin: auto;
+          border-radius: 10px;
+          box-shadow: 0 0 10px black,
+      0 0 20px black,
+      0 0 80px black,
+     0 0 100px black
+      ;
+        }
+    #ok img{
+      margin: auto;
+      width: 50vh;
+      height: 50vh;
+      border-radius: 10px;
+    }
+    #gh img{
+      margin: auto;
+      width: 40vh;
+      height: 40vh;
+      border-radius: 10px;
+    }
